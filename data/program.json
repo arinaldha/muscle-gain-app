@@ -1,0 +1,2901 @@
+{
+  "version": 1,
+  "defaults": {
+    "startDate": "2026-10-19",
+    "age": 26,
+    "sex": "Laki-laki",
+    "weightKg": 69,
+    "heightCm": 167,
+    "experience": "Pemula",
+    "dailyBudget": 50000,
+    "waistStartCm": null,
+    "activityFactor": 1.2,
+    "metGym": 5.0,
+    "gymMinutes": 55,
+    "gymSessionsPerWeek": 4,
+    "metCycling": 6.0,
+    "cyclingMinutesPerGymDay": 40,
+    "cyclingDaysPerWeek": 4,
+    "metFootball": 7.0,
+    "footballMinutesPerWeek": 90,
+    "metJogging": 7.0,
+    "joggingMinutesPerWeek": 30,
+    "surplusKcal": 300,
+    "proteinPerKg": 1.9,
+    "fatPct": 0.25,
+    "targetGainPerWeek": 0.2,
+    "minGainPerWeek": 0.1,
+    "maxGainPerWeek": 0.35,
+    "bedTime": "21:30",
+    "wakeTime": "04:30"
+  },
+  "assumptionNotes": {
+    "Tanggal mulai program (Senin)": "Ubah jika mulai di tanggal lain",
+    "Usia (tahun)": "Dari Anda",
+    "Jenis kelamin": "Dari Anda",
+    "Berat badan awal (kg)": "Dari Anda — ganti dengan rata-rata 7 hari minggu 1 bila berbeda",
+    "Tinggi badan (cm)": "Dari Anda",
+    "Pengalaman latihan": "Dari Anda",
+    "Anggaran makan per hari (Rp)": "Dari Anda (diasumsikan per hari)",
+    "Lingkar pinggang awal (cm)": "ISI pada minggu 1 (setinggi pusar, pagi, setelah buang napas)",
+    "Faktor aktivitas dasar (kerja duduk, tanpa olahraga)": "Asumsi: pekerjaan IT duduk. Olahraga dihitung terpisah di bawah agar tidak dobel",
+    "MET latihan beban": "Compendium of Physical Activities (resistance training, usaha berat ≈5)",
+    "Durasi gym (menit/sesi)": "Dari Anda: 45–60 menit",
+    "Sesi gym per minggu": "Program Upper/Lower 4×",
+    "MET bersepeda (komuter santai)": "Compendium: bersepeda 16–19 km/jam ≈6,8; dipakai 6,0 (konservatif)",
+    "Menit bersepeda per hari gym (PP)": "Dari Anda: 20 menit pergi + 20 menit pulang",
+    "Hari bersepeda per minggu": "Sama dengan hari gym",
+    "MET sepak bola rekreasi": "Compendium (soccer, casual)",
+    "Menit sepak bola per minggu": "ASUMSI: 1× main 90 menit. Ubah sesuai kebiasaan",
+    "MET jogging": "Compendium (jogging, general)",
+    "Menit jogging per minggu": "ASUMSI: 1× jogging santai 30 menit",
+    "Surplus kalori (kkal/hari)": "Surplus moderat untuk pemula (≈10–15% di atas TDEE)",
+    "Protein (g/kg BB)": "ISSN & meta-analisis Morton 2018: 1,6–2,2 g/kg",
+    "Lemak (% total kalori)": "Rentang umum 20–35%",
+    "Target kenaikan BB (kg/minggu)": "≈0,3% BB/minggu (Iraki 2019: 0,25–0,5%/minggu)",
+    "Batas bawah laju sehat (kg/minggu)": "Di bawah ini 2–3 minggu → naikkan kalori",
+    "Batas atas laju sehat (kg/minggu)": "Di atas ini 2–3 minggu → turunkan kalori"
+  },
+  "foods": [
+    {
+      "name": "Nasi putih (matang)",
+      "category": "Karbohidrat",
+      "condition": "Matang",
+      "kcal": 180,
+      "protein": 3.0,
+      "carbs": 39.8,
+      "fat": 0.3,
+      "fiber": 0.2,
+      "buyUnit": "kg beras",
+      "buyPrice": 15000,
+      "gramsPerUnit": 2600,
+      "ediblePct": 1.0,
+      "householdPortion": "1 centong ≈ 100 g; 250 g ≈ 2½ centong",
+      "source": "TKPI 2017 (nasi). 1 kg beras ≈ 2,6 kg nasi (estimasi). Harga beras medium–premium BPS/Bapanas 2026"
+    },
+    {
+      "name": "Oat (rolled oats, kering)",
+      "category": "Karbohidrat",
+      "condition": "Kering/mentah",
+      "kcal": 379,
+      "protein": 13.2,
+      "carbs": 67.7,
+      "fat": 6.5,
+      "fiber": 10.1,
+      "buyUnit": "kg",
+      "buyPrice": 50000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "80 g ≈ 1 gelas belimbing",
+      "source": "USDA FoodData Central (oats, rolled)"
+    },
+    {
+      "name": "Roti tawar putih",
+      "category": "Karbohidrat",
+      "condition": "Siap makan",
+      "kcal": 266,
+      "protein": 7.6,
+      "carbs": 50.6,
+      "fat": 3.3,
+      "fiber": 2.4,
+      "buyUnit": "bungkus ±370 g",
+      "buyPrice": 17000,
+      "gramsPerUnit": 370,
+      "ediblePct": 1.0,
+      "householdPortion": "1 lembar ≈ 25–30 g",
+      "source": "USDA FDC (white bread); harga estimasi ritel"
+    },
+    {
+      "name": "Ubi jalar (mentah)",
+      "category": "Karbohidrat",
+      "condition": "Mentah (dikupas)",
+      "kcal": 86,
+      "protein": 1.6,
+      "carbs": 20.1,
+      "fat": 0.1,
+      "fiber": 3.0,
+      "buyUnit": "kg",
+      "buyPrice": 15000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.85,
+      "householdPortion": "1 buah sedang ≈ 150–200 g",
+      "source": "USDA FDC (sweet potato, raw)"
+    },
+    {
+      "name": "Kentang (mentah)",
+      "category": "Karbohidrat",
+      "condition": "Mentah (dikupas)",
+      "kcal": 77,
+      "protein": 2.0,
+      "carbs": 17.5,
+      "fat": 0.1,
+      "fiber": 2.2,
+      "buyUnit": "kg",
+      "buyPrice": 18000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.85,
+      "householdPortion": "1 buah sedang ≈ 150 g",
+      "source": "USDA FDC (potato, raw)"
+    },
+    {
+      "name": "Nasi merah (matang)",
+      "category": "Karbohidrat",
+      "condition": "Matang",
+      "kcal": 123,
+      "protein": 2.7,
+      "carbs": 25.6,
+      "fat": 1.0,
+      "fiber": 1.6,
+      "buyUnit": "kg beras merah",
+      "buyPrice": 22000,
+      "gramsPerUnit": 2500,
+      "ediblePct": 1.0,
+      "householdPortion": "1 centong ≈ 100 g",
+      "source": "USDA FDC (brown rice, cooked) — alternatif"
+    },
+    {
+      "name": "Dada ayam fillet (mentah)",
+      "category": "Protein hewani",
+      "condition": "Mentah",
+      "kcal": 120,
+      "protein": 22.5,
+      "carbs": 0.0,
+      "fat": 2.6,
+      "fiber": 0.0,
+      "buyUnit": "kg",
+      "buyPrice": 52000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 fillet ≈ 150–200 g mentah (susut ±25% saat dimasak)",
+      "source": "USDA FDC (chicken breast, raw). Harga estimasi pasar Jabodetabek"
+    },
+    {
+      "name": "Paha ayam fillet tanpa kulit (mentah)",
+      "category": "Protein hewani",
+      "condition": "Mentah",
+      "kcal": 120,
+      "protein": 19.7,
+      "carbs": 0.0,
+      "fat": 3.9,
+      "fiber": 0.0,
+      "buyUnit": "kg",
+      "buyPrice": 45000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 potong ≈ 100–120 g mentah",
+      "source": "USDA FDC (chicken thigh, meat only, raw)"
+    },
+    {
+      "name": "Telur ayam ras (tanpa cangkang)",
+      "category": "Protein hewani",
+      "condition": "Mentah/rebus",
+      "kcal": 143,
+      "protein": 12.6,
+      "carbs": 0.7,
+      "fat": 9.5,
+      "fiber": 0.0,
+      "buyUnit": "kg (±16 butir)",
+      "buyPrice": 30000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.88,
+      "householdPortion": "1 butir ≈ 55 g tanpa cangkang",
+      "source": "USDA FDC (egg, whole). Harga telur ±Rp30 rb/kg (Bapanas/BPS 2025–2026)"
+    },
+    {
+      "name": "Ikan tongkol/cakalang (mentah, bersih)",
+      "category": "Protein hewani",
+      "condition": "Mentah",
+      "kcal": 103,
+      "protein": 22.0,
+      "carbs": 0.0,
+      "fat": 1.0,
+      "fiber": 0.0,
+      "buyUnit": "kg (utuh)",
+      "buyPrice": 32000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.6,
+      "householdPortion": "1 ekor kecil ≈ 200 g utuh ≈ 120 g daging",
+      "source": "USDA FDC (skipjack tuna, raw). Harga tongkol ±Rp31 rb/kg (Bapanas)"
+    },
+    {
+      "name": "Daging sapi tanpa lemak (mentah)",
+      "category": "Protein hewani",
+      "condition": "Mentah",
+      "kcal": 150,
+      "protein": 21.0,
+      "carbs": 0.0,
+      "fat": 7.0,
+      "fiber": 0.0,
+      "buyUnit": "kg",
+      "buyPrice": 135000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 potong semur ≈ 35 g",
+      "source": "Estimasi rerata USDA (beef round, lean). Harga sapi murni ±Rp135 rb/kg"
+    },
+    {
+      "name": "Tempe (mentah)",
+      "category": "Protein nabati",
+      "condition": "Mentah",
+      "kcal": 201,
+      "protein": 20.8,
+      "carbs": 13.5,
+      "fat": 8.8,
+      "fiber": 1.4,
+      "buyUnit": "kg",
+      "buyPrice": 20000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 potong sedang (4×6×1 cm) ≈ 25 g",
+      "source": "TKPI 2017 (tempe kedelai murni)"
+    },
+    {
+      "name": "Tahu putih (mentah)",
+      "category": "Protein nabati",
+      "condition": "Mentah",
+      "kcal": 80,
+      "protein": 10.9,
+      "carbs": 0.8,
+      "fat": 4.7,
+      "fiber": 0.1,
+      "buyUnit": "kg",
+      "buyPrice": 15000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 buah besar ≈ 100 g",
+      "source": "TKPI 2017 (tahu)"
+    },
+    {
+      "name": "Susu UHT full cream",
+      "category": "Susu & olahan",
+      "condition": "Siap minum (1 ml ≈ 1 g)",
+      "kcal": 61,
+      "protein": 3.2,
+      "carbs": 4.8,
+      "fat": 3.3,
+      "fiber": 0.0,
+      "buyUnit": "liter",
+      "buyPrice": 20000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 gelas = 250 ml",
+      "source": "USDA FDC (whole milk). Harga estimasi ritel"
+    },
+    {
+      "name": "Yoghurt plain",
+      "category": "Susu & olahan",
+      "condition": "Siap makan",
+      "kcal": 61,
+      "protein": 3.5,
+      "carbs": 4.7,
+      "fat": 3.3,
+      "fiber": 0.0,
+      "buyUnit": "cup 500 g",
+      "buyPrice": 30000,
+      "gramsPerUnit": 500,
+      "ediblePct": 1.0,
+      "householdPortion": "1 cup kecil ≈ 150 g",
+      "source": "USDA FDC (yogurt, plain, whole milk) — alternatif"
+    },
+    {
+      "name": "Whey protein (bubuk)",
+      "category": "Suplemen",
+      "condition": "Bubuk",
+      "kcal": 400,
+      "protein": 75.0,
+      "carbs": 10.0,
+      "fat": 6.0,
+      "fiber": 0.0,
+      "buyUnit": "kg",
+      "buyPrice": 400000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 scoop ≈ 30 g",
+      "source": "Rerata label produk umum — opsional, cek label merek Anda"
+    },
+    {
+      "name": "Pisang (bagian dimakan)",
+      "category": "Buah",
+      "condition": "Mentah",
+      "kcal": 89,
+      "protein": 1.1,
+      "carbs": 22.8,
+      "fat": 0.3,
+      "fiber": 2.6,
+      "buyUnit": "kg (dengan kulit)",
+      "buyPrice": 20000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.65,
+      "householdPortion": "1 buah sedang ≈ 100 g dimakan",
+      "source": "USDA FDC (banana, raw)"
+    },
+    {
+      "name": "Pepaya (bagian dimakan)",
+      "category": "Buah",
+      "condition": "Mentah",
+      "kcal": 43,
+      "protein": 0.5,
+      "carbs": 10.8,
+      "fat": 0.3,
+      "fiber": 1.7,
+      "buyUnit": "kg (utuh)",
+      "buyPrice": 12000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.7,
+      "householdPortion": "1 potong besar ≈ 150 g",
+      "source": "USDA FDC (papaya, raw)"
+    },
+    {
+      "name": "Kacang tanah sangrai",
+      "category": "Lemak/kacang",
+      "condition": "Siap makan",
+      "kcal": 585,
+      "protein": 24.4,
+      "carbs": 21.5,
+      "fat": 49.7,
+      "fiber": 8.4,
+      "buyUnit": "kg",
+      "buyPrice": 40000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 1.0,
+      "householdPortion": "1 genggam ≈ 30 g",
+      "source": "USDA FDC (peanuts, dry-roasted)"
+    },
+    {
+      "name": "Sayur campur: wortel/kol/buncis (mentah)",
+      "category": "Sayur",
+      "condition": "Mentah",
+      "kcal": 30,
+      "protein": 1.5,
+      "carbs": 6.0,
+      "fat": 0.2,
+      "fiber": 2.5,
+      "buyUnit": "kg",
+      "buyPrice": 15000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.9,
+      "householdPortion": "1 mangkuk ≈ 100–150 g",
+      "source": "Estimasi rerata USDA (wortel, kol, buncis)"
+    },
+    {
+      "name": "Bayam/kangkung (mentah)",
+      "category": "Sayur",
+      "condition": "Mentah",
+      "kcal": 23,
+      "protein": 2.9,
+      "carbs": 3.6,
+      "fat": 0.4,
+      "fiber": 2.2,
+      "buyUnit": "kg",
+      "buyPrice": 12000,
+      "gramsPerUnit": 1000,
+      "ediblePct": 0.7,
+      "householdPortion": "1 ikat ≈ 250 g kotor",
+      "source": "USDA FDC (spinach, raw)"
+    },
+    {
+      "name": "Minyak goreng sawit",
+      "category": "Lemak/kacang",
+      "condition": "—",
+      "kcal": 884,
+      "protein": 0.0,
+      "carbs": 0.0,
+      "fat": 100.0,
+      "fiber": 0.0,
+      "buyUnit": "liter (±920 g)",
+      "buyPrice": 18000,
+      "gramsPerUnit": 920,
+      "ediblePct": 1.0,
+      "householdPortion": "1 sdm ≈ 13 g",
+      "source": "USDA FDC (vegetable oil). Harga minyak kemasan ±Rp18 rb/L (Bapanas)"
+    },
+    {
+      "name": "Bumbu dapur (estimasi)",
+      "category": "Lain-lain",
+      "condition": "—",
+      "kcal": 100,
+      "protein": 2.0,
+      "carbs": 20.0,
+      "fat": 1.0,
+      "fiber": 1.0,
+      "buyUnit": "paket mingguan",
+      "buyPrice": 14000,
+      "gramsPerUnit": 140,
+      "ediblePct": 1.0,
+      "householdPortion": "±10 g per masakan (bawang, cabai, garam, kecap)",
+      "source": "Estimasi kasar; kontribusi gizi kecil, dominan biaya"
+    }
+  ],
+  "mealPlan": {
+    "Senin": [
+      {
+        "time": "04:40",
+        "slot": "Pra-gym",
+        "menu": "Pisang + air 300–500 ml",
+        "items": [
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "1 lembar roti tawar + madu tipis, atau 100 g ubi rebus"
+      },
+      {
+        "time": "07:00",
+        "slot": "Makan 1 (pasca-gym)",
+        "menu": "Oatmeal susu + telur rebus",
+        "items": [
+          {
+            "food": "Oat (rolled oats, kering)",
+            "grams": 80
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 250
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          }
+        ],
+        "alternative": "Nasi 150 g + telur dadar 3 butir (masak minyak 1 sdt)"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2 (bekal kantor)",
+        "menu": "Nasi + ayam panggang teflon + tempe bacem + tumis sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Dada ayam fillet (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 80
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Warteg: nasi 1 porsi + ayam bakar/goreng (buang kulit) + tempe + sayur"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pisang",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Susu UHT 250 ml + 2 lembar roti, atau 2 telur rebus + 1 buah"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3 (sebelum tesis)",
+        "menu": "Nasi + paha ayam kecap + tahu + sayur bening bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Paha ayam fillet tanpa kulit (mentah)",
+            "grams": 120
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti paha ayam dengan 2 butir telur + 1 potong tempe"
+      }
+    ],
+    "Selasa": [
+      {
+        "time": "04:40",
+        "slot": "Pra-gym",
+        "menu": "Pisang + air 300–500 ml",
+        "items": [
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "1 lembar roti tawar + madu tipis, atau 100 g ubi rebus"
+      },
+      {
+        "time": "07:00",
+        "slot": "Makan 1 (pasca-gym)",
+        "menu": "Roti telur + susu",
+        "items": [
+          {
+            "food": "Roti tawar putih",
+            "grams": 100
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 250
+          }
+        ],
+        "alternative": "Oatmeal 80 g + susu 250 ml + 2 telur"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2 (bekal kantor)",
+        "menu": "Nasi + ayam suwir bumbu + tahu + tumis sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Dada ayam fillet (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti dada ayam dengan paha ayam 150 g"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pisang",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Susu UHT 250 ml + 2 lembar roti, atau 2 telur rebus + 1 buah"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3 (sebelum tesis)",
+        "menu": "Nasi + tongkol balado + tempe + sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Ikan tongkol/cakalang (mentah, bersih)",
+            "grams": 130
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 80
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 10
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti tongkol dengan ikan kembung/bandeng ±130 g daging"
+      }
+    ],
+    "Rabu": [
+      {
+        "time": "07:00",
+        "slot": "Makan 1 (setelah tesis pagi)",
+        "menu": "Oatmeal susu + telur + pisang",
+        "items": [
+          {
+            "food": "Oat (rolled oats, kering)",
+            "grams": 80
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 250
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Nasi uduk/nasi + 2 telur balado + pisang (beli)"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2 (bekal kantor)",
+        "menu": "Nasi + paha ayam bakar + tempe + tumis sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Paha ayam fillet tanpa kulit (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 80
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Warteg: nasi + ayam + tempe + sayur"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pepaya",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pepaya (bagian dimakan)",
+            "grams": 200
+          }
+        ],
+        "alternative": "Yoghurt plain 150 g + pisang"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3 (sebelum tesis)",
+        "menu": "Nasi + telur dadar + tahu + bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 200
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti tahu dengan tempe 80 g"
+      }
+    ],
+    "Kamis": [
+      {
+        "time": "04:40",
+        "slot": "Pra-gym",
+        "menu": "Pisang + air 300–500 ml",
+        "items": [
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "1 lembar roti tawar + madu tipis, atau 100 g ubi rebus"
+      },
+      {
+        "time": "07:00",
+        "slot": "Makan 1 (pasca-gym)",
+        "menu": "Oatmeal susu + telur rebus",
+        "items": [
+          {
+            "food": "Oat (rolled oats, kering)",
+            "grams": 80
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 250
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          }
+        ],
+        "alternative": "Roti tawar 3 lembar + 2 telur + susu"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2 (bekal kantor)",
+        "menu": "Nasi + ayam panggang + tahu + tumis sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Dada ayam fillet (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti dada ayam dengan tongkol 150 g"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pisang",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Susu UHT 250 ml + 2 lembar roti, atau 2 telur rebus + 1 buah"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3 (sebelum tesis)",
+        "menu": "Nasi + tongkol suwir + tempe + bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 200
+          },
+          {
+            "food": "Ikan tongkol/cakalang (mentah, bersih)",
+            "grams": 130
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 10
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti tongkol dengan paha ayam 120 g"
+      }
+    ],
+    "Jumat": [
+      {
+        "time": "04:40",
+        "slot": "Pra-gym",
+        "menu": "Pisang + air 300–500 ml",
+        "items": [
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "1 lembar roti tawar + madu tipis, atau 100 g ubi rebus"
+      },
+      {
+        "time": "07:00",
+        "slot": "Makan 1 (pasca-gym)",
+        "menu": "Ubi rebus + telur rebus + susu",
+        "items": [
+          {
+            "food": "Ubi jalar (mentah)",
+            "grams": 200
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 165
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 250
+          }
+        ],
+        "alternative": "Kentang rebus 220 g sebagai pengganti ubi"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2 (bekal kantor)",
+        "menu": "Nasi + paha ayam + tempe + tumis sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Paha ayam fillet tanpa kulit (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 80
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Warteg: nasi + ayam + tempe + sayur"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pisang",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Susu UHT 250 ml + 2 lembar roti, atau 2 telur rebus + 1 buah"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3 (sebelum tesis)",
+        "menu": "Nasi + dada ayam + tahu + bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Dada ayam fillet (mentah)",
+            "grams": 120
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti dada ayam dengan 2 telur + tempe 50 g"
+      }
+    ],
+    "Sabtu": [
+      {
+        "time": "07:00",
+        "slot": "Makan 1",
+        "menu": "Nasi goreng telur sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 200
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 165
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Bubur ayam + 2 telur rebus (beli)"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2",
+        "menu": "Nasi + ayam panggang + tempe + sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Dada ayam fillet (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti dada ayam dengan tongkol 150 g"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan sebelum sepak bola",
+        "menu": "Roti + pisang",
+        "items": [
+          {
+            "food": "Roti tawar putih",
+            "grams": 70
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Tidak main bola: tetap makan (target kalori tetap) atau ganti 30 g kacang"
+      },
+      {
+        "time": "18:30",
+        "slot": "Makan 3 (setelah sepak bola)",
+        "menu": "Nasi + tongkol + tahu + bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 200
+          },
+          {
+            "food": "Ikan tongkol/cakalang (mentah, bersih)",
+            "grams": 130
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti tongkol dengan paha ayam 120 g"
+      }
+    ],
+    "Minggu": [
+      {
+        "time": "07:00",
+        "slot": "Makan 1",
+        "menu": "Oatmeal susu + telur + pepaya",
+        "items": [
+          {
+            "food": "Oat (rolled oats, kering)",
+            "grams": 80
+          },
+          {
+            "food": "Susu UHT full cream",
+            "grams": 300
+          },
+          {
+            "food": "Telur ayam ras (tanpa cangkang)",
+            "grams": 110
+          },
+          {
+            "food": "Pepaya (bagian dimakan)",
+            "grams": 150
+          }
+        ],
+        "alternative": "Nasi 150 g + 3 telur + buah"
+      },
+      {
+        "time": "12:00",
+        "slot": "Makan 2",
+        "menu": "Nasi + semur daging sapi + tempe + sayur",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 250
+          },
+          {
+            "food": "Daging sapi tanpa lemak (mentah)",
+            "grams": 70
+          },
+          {
+            "food": "Tempe (mentah)",
+            "grams": 80
+          },
+          {
+            "food": "Sayur campur: wortel/kol/buncis (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Anggaran ketat: ganti sapi dengan paha ayam 100 g (hemat ±Rp5 rb)"
+      },
+      {
+        "time": "15:00",
+        "slot": "Camilan kantor",
+        "menu": "Kacang sangrai + pisang",
+        "items": [
+          {
+            "food": "Kacang tanah sangrai",
+            "grams": 30
+          },
+          {
+            "food": "Pisang (bagian dimakan)",
+            "grams": 100
+          }
+        ],
+        "alternative": "Susu UHT 250 ml + 2 lembar roti, atau 2 telur rebus + 1 buah"
+      },
+      {
+        "time": "17:30",
+        "slot": "Makan 3",
+        "menu": "Nasi + paha ayam + tahu + bayam",
+        "items": [
+          {
+            "food": "Nasi putih (matang)",
+            "grams": 270
+          },
+          {
+            "food": "Paha ayam fillet tanpa kulit (mentah)",
+            "grams": 120
+          },
+          {
+            "food": "Tahu putih (mentah)",
+            "grams": 100
+          },
+          {
+            "food": "Bayam/kangkung (mentah)",
+            "grams": 150
+          },
+          {
+            "food": "Minyak goreng sawit",
+            "grams": 8
+          },
+          {
+            "food": "Bumbu dapur (estimasi)",
+            "grams": 10
+          }
+        ],
+        "alternative": "Ganti paha ayam dengan tongkol 130 g"
+      }
+    ]
+  },
+  "storageNotes": {
+    "Nasi putih (matang)": "Masak 2× seminggu (Minggu & Rabu). Nasi matang di kulkas ≤3 hari dalam wadah tertutup; panaskan hingga mengepul.",
+    "Oat (rolled oats, kering)": "Simpan kering & tertutup. Bisa overnight oats (rendam susu di kulkas malam sebelumnya).",
+    "Roti tawar putih": "Suhu ruang 3–4 hari; bekukan sisanya.",
+    "Ubi jalar (mentah)": "Suhu ruang, tempat kering. Rebus 4–5 buah sekaligus, simpan kulkas ≤3 hari.",
+    "Dada ayam fillet (mentah)": "Bumbui & panggang Minggu (untuk Sen–Rab) dan Rabu (Kam–Sab). Daging matang di kulkas ≤3–4 hari; porsi mentah sisanya di freezer.",
+    "Paha ayam fillet tanpa kulit (mentah)": "Sama seperti dada ayam; bagi per porsi 120–150 g sebelum dibekukan.",
+    "Telur ayam ras (tanpa cangkang)": "Kulkas. Rebus 6–8 butir sekaligus (tahan ±7 hari dengan kulit di kulkas).",
+    "Ikan tongkol/cakalang (mentah, bersih)": "Minta pedagang membersihkan. Masak hari yang sama atau bekukan per porsi.",
+    "Daging sapi tanpa lemak (mentah)": "Semur di Minggu; sisa porsi bekukan.",
+    "Tempe (mentah)": "Kulkas 2–3 hari; bacem sekaligus untuk 3 hari.",
+    "Tahu putih (mentah)": "Rendam air di kulkas, ganti air tiap hari, habiskan ≤3 hari.",
+    "Susu UHT full cream": "Suhu ruang sebelum dibuka; setelah dibuka kulkas ≤3 hari.",
+    "Pisang (bagian dimakan)": "Beli 1 sisir campuran matang & setengah matang.",
+    "Pepaya (bagian dimakan)": "Potong & simpan kulkas ≤3 hari.",
+    "Kacang tanah sangrai": "Bagi ke 7 plastik/wadah kecil 30 g untuk dibawa ke kantor.",
+    "Sayur campur: wortel/kol/buncis (mentah)": "Cuci–potong Minggu untuk 3 hari; simpan kering di wadah ber-tisu.",
+    "Bayam/kangkung (mentah)": "Beli 2× seminggu; masak hari yang sama (cepat layu).",
+    "Minyak goreng sawit": "Takar dengan sendok makan (1 sdm ≈ 13 g).",
+    "Bumbu dapur (estimasi)": "Bawang merah/putih, cabai, garam, kecap — buat bumbu dasar sekali untuk 1 minggu."
+  },
+  "workout": {
+    "sessions": [
+      {
+        "id": "lowerA",
+        "name": "Lower A",
+        "day": "Senin",
+        "title": "LOWER A — Senin (fokus squat)",
+        "exercises": [
+          {
+            "name": "Back Squat (barbell)",
+            "muscle": "Quads",
+            "secondary": "Glutes, adduktor",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "6–10 (F1: 8–10)",
+            "rir": "F1: 3 → F2+: 2",
+            "restSec": 150,
+            "priority": "Wajib",
+            "alternative": "Smith machine squat / Hack squat / Goblet squat (F1)",
+            "notes": "Bracing perut, lutut searah jari kaki, turun sedalam mobilitas memungkinkan dengan punggung netral. Hindari: lutut masuk ke dalam, tumit terangkat, memantul di bawah."
+          },
+          {
+            "name": "Romanian Deadlift (barbell)",
+            "muscle": "Hamstring",
+            "secondary": "Glutes, punggung bawah",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "8–12",
+            "rir": "2",
+            "restSec": 120,
+            "priority": "Wajib",
+            "alternative": "DB Romanian deadlift / 45° back extension",
+            "notes": "Engsel di pinggul, lutut sedikit tekuk, bar menempel paha; turun sampai hamstring teregang. Hindari: punggung membulat, bar menjauh."
+          },
+          {
+            "name": "Leg Press",
+            "muscle": "Quads",
+            "secondary": "Glutes",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "10–15",
+            "rir": "2 → 1",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "Hack squat / Bulgarian split squat",
+            "notes": "Rentang gerak penuh, punggung bawah tetap menempel sandaran, jangan kunci lutut."
+          },
+          {
+            "name": "Lying Leg Curl",
+            "muscle": "Hamstring",
+            "secondary": "Betis",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 75,
+            "priority": "Opsional",
+            "alternative": "Seated leg curl / Nordic curl dibantu",
+            "notes": "Turunkan pelan 2–3 detik, pinggul menempel bantalan."
+          },
+          {
+            "name": "Standing Calf Raise",
+            "muscle": "Betis",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Calf raise di leg press / Smith",
+            "notes": "Jeda 1–2 detik di posisi teregang bawah; jangan memantul."
+          },
+          {
+            "name": "Cable Crunch",
+            "muscle": "Perut",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Plank 30–45 detik / Reverse crunch",
+            "notes": "Gulung tulang belakang, hembuskan napas saat kontraksi."
+          }
+        ]
+      },
+      {
+        "id": "upperA",
+        "name": "Upper A",
+        "day": "Selasa",
+        "title": "UPPER A — Selasa (fokus dorong & tarik horizontal)",
+        "exercises": [
+          {
+            "name": "Barbell Bench Press",
+            "muscle": "Dada",
+            "secondary": "Trisep, bahu depan",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "6–10 (F1: 8–10)",
+            "rir": "F1: 3 → F2+: 2",
+            "restSec": 150,
+            "priority": "Wajib",
+            "alternative": "DB bench press / Machine chest press",
+            "notes": "Belikat ditarik & ditekan ke bangku, kaki menapak, bar menyentuh dada bawah. Hindari: siku melebar 90°, memantulkan bar. Pakai safety bar/spotter."
+          },
+          {
+            "name": "Lat Pulldown",
+            "muscle": "Punggung",
+            "secondary": "Bisep",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "8–12",
+            "rir": "2",
+            "restSec": 120,
+            "priority": "Wajib",
+            "alternative": "Assisted pull-up / Machine pulldown",
+            "notes": "Tarik siku ke arah rusuk, dada terangkat; jangan bersandar berlebihan atau mengayun."
+          },
+          {
+            "name": "Seated Cable Row",
+            "muscle": "Punggung",
+            "secondary": "Bahu belakang, bisep",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "10–12",
+            "rir": "2 → 1",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "Chest-supported machine row",
+            "notes": "Torso stabil, tarik ke perut, tahan 1 detik; jangan mengayun punggung bawah."
+          },
+          {
+            "name": "Incline DB Press (30°)",
+            "muscle": "Dada",
+            "secondary": "Bahu depan, trisep",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "8–12",
+            "rir": "2",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "Incline machine press / Incline Smith press",
+            "notes": "Bangku ±30°, turunkan terkendali sampai dada teregang."
+          },
+          {
+            "name": "DB Lateral Raise",
+            "muscle": "Bahu samping",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "12–20",
+            "rir": "1–2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Cable / machine lateral raise",
+            "notes": "Angkat setinggi bahu, siku sedikit tekuk; jangan mengayun badan."
+          },
+          {
+            "name": "Cable Triceps Pushdown (superset)",
+            "muscle": "Trisep",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 45,
+            "priority": "Opsional",
+            "alternative": "Overhead DB extension",
+            "notes": "Siku tetap di samping badan, kunci di bawah."
+          },
+          {
+            "name": "DB Biceps Curl (superset)",
+            "muscle": "Bisep",
+            "secondary": "Lengan bawah",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 45,
+            "priority": "Opsional",
+            "alternative": "Cable curl / EZ-bar curl",
+            "notes": "Tanpa mengayun; turunkan pelan 2 detik."
+          }
+        ]
+      },
+      {
+        "id": "lowerB",
+        "name": "Lower B",
+        "day": "Kamis",
+        "title": "LOWER B — Kamis (fokus hip hinge)",
+        "exercises": [
+          {
+            "name": "Trap Bar Deadlift",
+            "muscle": "Glutes",
+            "secondary": "Hamstring, quads, punggung",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "5–8 (F1: 6–8)",
+            "rir": "3 (jangan <2)",
+            "restSec": 150,
+            "priority": "Wajib",
+            "alternative": "Conventional deadlift / Hip thrust",
+            "notes": "Dorong lantai, punggung netral, kunci pinggul tanpa melengkung ke belakang. Reset tiap repetisi bila teknik turun."
+          },
+          {
+            "name": "Bulgarian Split Squat (DB)",
+            "muscle": "Quads",
+            "secondary": "Glutes",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "8–12/kaki",
+            "rir": "2",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "Walking lunge / Single-leg leg press",
+            "notes": "Torso sedikit condong, lutut depan searah jari kaki; mulai dari kaki yang lebih lemah."
+          },
+          {
+            "name": "Leg Extension",
+            "muscle": "Quads",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "12–15",
+            "rir": "1–2",
+            "restSec": 75,
+            "priority": "Opsional",
+            "alternative": "Goblet squat tumit diganjal",
+            "notes": "Tahan 1 detik di atas, turunkan pelan."
+          },
+          {
+            "name": "Seated Leg Curl",
+            "muscle": "Hamstring",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 75,
+            "priority": "Wajib",
+            "alternative": "Lying leg curl",
+            "notes": "Pinggul ditahan, rentang gerak penuh."
+          },
+          {
+            "name": "Seated Calf Raise",
+            "muscle": "Betis",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "12–20",
+            "rir": "1–2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Calf raise di leg press",
+            "notes": "Jeda di posisi teregang, gerakan terkendali."
+          },
+          {
+            "name": "Hanging Knee Raise",
+            "muscle": "Perut",
+            "secondary": "Fleksor pinggul",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "8–15",
+            "rir": "2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Reverse crunch / Dead bug",
+            "notes": "Gulung panggul ke atas, jangan mengayun."
+          }
+        ]
+      },
+      {
+        "id": "upperB",
+        "name": "Upper B",
+        "day": "Jumat",
+        "title": "UPPER B — Jumat (fokus dorong & tarik vertikal)",
+        "exercises": [
+          {
+            "name": "Seated DB Shoulder Press",
+            "muscle": "Bahu depan",
+            "secondary": "Trisep",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "6–10 (F1: 8–10)",
+            "rir": "F1: 3 → F2+: 2",
+            "restSec": 120,
+            "priority": "Wajib",
+            "alternative": "Machine shoulder press",
+            "notes": "Punggung menempel sandaran, siku sedikit di depan badan, jangan melengkungkan punggung bawah."
+          },
+          {
+            "name": "Lat Pulldown",
+            "muscle": "Punggung",
+            "secondary": "Bisep",
+            "setsPhase1": 3,
+            "setsPhase2": 3,
+            "reps": "6–10 (pegangan netral)",
+            "rir": "2",
+            "restSec": 120,
+            "priority": "Wajib",
+            "alternative": "Assisted pull-up",
+            "notes": "Gunakan pegangan netral/sempit untuk variasi; bahu turun dulu baru tarik."
+          },
+          {
+            "name": "Chest-supported DB Row",
+            "muscle": "Punggung",
+            "secondary": "Bahu belakang",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "8–12",
+            "rir": "2",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "T-bar row machine / Machine row",
+            "notes": "Dada menempel bangku incline, tarik siku ke pinggul."
+          },
+          {
+            "name": "Machine Chest Press",
+            "muscle": "Dada",
+            "secondary": "Trisep",
+            "setsPhase1": 2,
+            "setsPhase2": 3,
+            "reps": "8–12",
+            "rir": "2 → 1",
+            "restSec": 90,
+            "priority": "Wajib",
+            "alternative": "DB bench press / Assisted dips",
+            "notes": "Pegangan sejajar dada tengah; kontrol fase turun."
+          },
+          {
+            "name": "Face Pull (cable)",
+            "muscle": "Bahu belakang",
+            "secondary": "Punggung atas",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "12–20",
+            "rir": "2",
+            "restSec": 60,
+            "priority": "Opsional",
+            "alternative": "Reverse pec deck",
+            "notes": "Tarik ke arah dahi, siku tinggi, putar keluar di akhir."
+          },
+          {
+            "name": "Overhead Cable Triceps Extension (superset)",
+            "muscle": "Trisep",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 45,
+            "priority": "Opsional",
+            "alternative": "Skull crusher EZ-bar",
+            "notes": "Siku menghadap depan, regangkan penuh di belakang kepala."
+          },
+          {
+            "name": "Incline DB Curl (superset)",
+            "muscle": "Bisep",
+            "secondary": "—",
+            "setsPhase1": 2,
+            "setsPhase2": 2,
+            "reps": "10–15",
+            "rir": "1–2",
+            "restSec": 45,
+            "priority": "Opsional",
+            "alternative": "Preacher curl machine",
+            "notes": "Bahu tetap di belakang, jangan mengayun."
+          }
+        ]
+      }
+    ],
+    "warmup": "Pemanasan tiap sesi (±8 menit, sudah termasuk): bersepeda ke gym = pemanasan umum → 2–3 gerakan mobilitas sendi yang dipakai → set ramp-up latihan pertama: 10 reps @ ±40%, 5 @ ±60%, 3 @ ±80% beban kerja. Latihan kedua cukup 1 set ramp-up.",
+    "progressionRules": [
+      {
+        "title": "Naikkan REPS",
+        "text": "Setiap sesi, coba tambah 1 rep di satu atau lebih set dengan beban sama, selama RIR tetap ≥ target dan teknik rapi."
+      },
+      {
+        "title": "Naikkan BEBAN",
+        "text": "Ketika SEMUA set mencapai batas atas rentang reps pada RIR target dengan teknik baik (mis. 3×10 @RIR 2 untuk 6–10)."
+      },
+      {
+        "title": "Besar kenaikan",
+        "text": "Squat/deadlift/leg press: +2,5–5 kg. Bench/row/pulldown: +2,5 kg. Dumbel: +1–2 kg per tangan. Mesin: 1 pin. Setelah naik, reps turun ke batas bawah — normal."
+      },
+      {
+        "title": "Jangan otomatis tiap minggu",
+        "text": "Beban hanya naik bila kriteria terpenuhi. Teknik buruk, nyeri, atau RIR aktual < target → tahan beban."
+      },
+      {
+        "title": "Stagnan 2 sesi",
+        "text": "Reps/beban tidak naik 2 sesi berturut-turut → cek tidur, kalori & protein minggu itu dulu."
+      },
+      {
+        "title": "Stagnan 3 sesi",
+        "text": "Turunkan beban 5–10%, bangun ulang dengan reps penuh; atau ganti ke variasi alternatif (kolom L) selama 4–6 minggu."
+      },
+      {
+        "title": "Tambah volume",
+        "text": "Pemulihan baik (nyeri otot <48 jam, energi ≥3/5) tapi progres melambat di F3 → +1 set untuk 1–2 otot prioritas. Maks. +2 set/otot/minggu."
+      },
+      {
+        "title": "Kurangi volume",
+        "text": "Nyeri otot >72 jam, performa turun di banyak latihan, atau tidur <6 jam beberapa malam → −1 set per latihan selama 1–2 minggu."
+      },
+      {
+        "title": "Deload",
+        "text": "Terjadwal minggu 13 & 26: set dipotong ±50%, beban ±90%, RIR 4. Deload lebih awal bila performa turun 2 minggu beruntun + lelah menetap."
+      },
+      {
+        "title": "RIR pemula",
+        "text": "RIR = sisa reps sebelum gagal teknik. Minggu 1–2 sengaja RIR 3–4 untuk belajar. Tes kejujuran: sesekali set terakhir isolasi sampai RIR 0 untuk kalibrasi."
+      }
+    ],
+    "phases": [
+      {
+        "name": "F1 Adaptasi & teknik",
+        "weeks": "1–4",
+        "focus": "Pola gerak, baseline beban, konsistensi jadwal",
+        "volume": "Kolom 'Set Fase 1'",
+        "rir": "3–4 (mg 1–2), 2–3 (mg 3–4)",
+        "notes": "Mulai dengan beban yang bisa dilakukan di batas atas reps @RIR 3. Rekam video sesekali untuk cek teknik."
+      },
+      {
+        "name": "F2 Volume & kekuatan",
+        "weeks": "5–12",
+        "focus": "Double progression konsisten",
+        "volume": "Kolom 'Set Fase 2–4'",
+        "rir": "Compound 2, isolasi 1–2",
+        "notes": "Fase progres tercepat pemula; catat setiap set di Workout Tracker."
+      },
+      {
+        "name": "Deload + evaluasi",
+        "weeks": "13",
+        "focus": "Pemulihan, ukur & foto",
+        "volume": "±50%",
+        "rir": "4",
+        "notes": "Evaluasi kalori, foto, pinggang, e1RM."
+      },
+      {
+        "name": "F3 Progres lanjutan",
+        "weeks": "14–21",
+        "focus": "Tambah set bila pulih; compound 5–8 reps boleh",
+        "volume": "Set F2 + 0–2 set/otot prioritas",
+        "rir": "Compound 1–2, set terakhir isolasi 0–1",
+        "notes": "Prioritaskan otot yang tertinggal (foto & ukuran)."
+      },
+      {
+        "name": "F4 Konsolidasi",
+        "weeks": "22–24",
+        "focus": "Pertahankan progres, rapikan teknik",
+        "volume": "Set F3",
+        "rir": "1–2",
+        "notes": "Hindari menambah volume baru."
+      },
+      {
+        "name": "Uji performa",
+        "weeks": "25",
+        "focus": "Top set latihan utama @RIR 1 → e1RM",
+        "volume": "Set normal",
+        "rir": "1 (hanya top set)",
+        "notes": "BUKAN uji 1RM maksimal; tetap aman tanpa spotter."
+      },
+      {
+        "name": "Deload + evaluasi akhir",
+        "weeks": "26",
+        "focus": "Bandingkan bulan 0 vs 6, rencanakan blok berikutnya",
+        "volume": "±50%",
+        "rir": "4",
+        "notes": "Pilihan lanjut: lean bulk blok kedua atau 4–8 minggu maintenance."
+      }
+    ],
+    "adjustments": [
+      {
+        "situation": "Hanya punya 45 menit",
+        "action": "Kerjakan latihan 'Wajib' saja; superset otot antagonis (mis. bench + pulldown) dengan istirahat 90 detik antar ronde."
+      },
+      {
+        "situation": "Kurang tidur (<6 jam)",
+        "action": "Tetap datang bila tidak pusing/sakit: semua set RIR +1, buang 1 set terakhir tiap latihan (±35 mnt). Jangan menguji beban baru."
+      },
+      {
+        "situation": "Kelelahan setelah kerja/tesis",
+        "action": "Gym di pagi hari tidak terganggu; prioritaskan tidur malam. Bila lelah menumpuk 3+ hari → jadikan minggu itu deload ringan."
+      },
+      {
+        "situation": "Melewatkan 1 sesi",
+        "action": "Geser jadwal: lakukan sesi yang terlewat di hari berikutnya yang tersedia (mis. Rabu/Sabtu), lalu lanjutkan urutan. JANGAN menggabungkan 2 sesi dalam 1 hari."
+      },
+      {
+        "situation": "Minggu tesis padat / deadline",
+        "action": "Mode minimum: 2–3 sesi/minggu, hanya latihan 'Wajib' (±40 mnt). Kalori & protein tetap. Ini mempertahankan otot & progres dasar."
+      },
+      {
+        "situation": "Sepak bola dekat leg day",
+        "action": "Beri jarak ≥48 jam sebelum Lower A/B. Jika main bola sehari sebelum Lower: tukar dengan Upper, atau potong 1 set tiap latihan kaki dan RIR +1."
+      },
+      {
+        "situation": "Jogging",
+        "action": "20–30 mnt intensitas santai (masih bisa ngobrol), Minggu pagi. Hindari interval berat sehari sebelum Lower."
+      },
+      {
+        "situation": "Biliar",
+        "action": "Fleksibel kapan saja; tidak memengaruhi pemulihan. Jaga agar tidak menggeser jam tidur."
+      },
+      {
+        "situation": "Nyeri sendi (bukan pegal otot)",
+        "action": "Hentikan latihan pemicu, pakai alternatif tanpa nyeri. Nyeri >1 minggu, tajam, atau bengkak → konsultasi dokter/fisioterapis."
+      }
+    ],
+    "weekly": [
+      {
+        "day": "Senin",
+        "morning": "Gym — Lower A (squat)",
+        "evening": "Tesis 17:50–20:50",
+        "note": "48+ jam setelah sepak bola Sabtu"
+      },
+      {
+        "day": "Selasa",
+        "morning": "Gym — Upper A (bench/row)",
+        "evening": "Tesis 17:50–20:50",
+        "note": ""
+      },
+      {
+        "day": "Rabu",
+        "morning": "Istirahat gym → Tesis blok pagi 04:45–06:45",
+        "evening": "Meal prep 30–40 mnt + tesis",
+        "note": "Kompensasi jam tesis malam yang dipotong"
+      },
+      {
+        "day": "Kamis",
+        "morning": "Gym — Lower B (deadlift)",
+        "evening": "Tesis 17:50–20:50",
+        "note": ""
+      },
+      {
+        "day": "Jumat",
+        "morning": "Gym — Upper B (press/pull)",
+        "evening": "Tesis 17:50–20:50",
+        "note": "Upper sehari sebelum sepak bola → aman untuk kaki"
+      },
+      {
+        "day": "Sabtu",
+        "morning": "Tesis 07:30–10:30, belanja",
+        "evening": "Sepak bola (opsional) / biliar",
+        "note": "Tidur boleh sampai 05:30"
+      },
+      {
+        "day": "Minggu",
+        "morning": "Jogging santai 20–30 mnt (opsional)",
+        "evening": "Meal prep besar pagi, tesis siang, review mingguan",
+        "note": "Kembali tidur 21:30 untuk bangun 04:30 Senin"
+      }
+    ]
+  },
+  "monthlyTargets": [
+    {
+      "month": 1,
+      "week": 4,
+      "focus": "Adaptasi teknik, catat baseline beban",
+      "indicator": "≥80% sesi selesai; teknik stabil; protein ≥90% target ≥5 hari/minggu"
+    },
+    {
+      "month": 2,
+      "week": 8,
+      "focus": "Volume naik, double progression",
+      "indicator": "Reps/beban naik di mayoritas latihan; tidur ≥7 jam ≥5 malam/minggu"
+    },
+    {
+      "month": 3,
+      "week": 13,
+      "focus": "Deload + evaluasi menyeluruh (mg 13)",
+      "indicator": "Foto & ukur ulang; laju BB dalam rentang; sesuaikan kalori bila perlu"
+    },
+    {
+      "month": 4,
+      "week": 17,
+      "focus": "Progres lanjutan, tambah set bila pulih",
+      "indicator": "e1RM latihan utama terus naik; pinggang naik pelan"
+    },
+    {
+      "month": 5,
+      "week": 21,
+      "focus": "Progres lanjutan",
+      "indicator": "Kepatuhan ≥80%; tidak ada nyeri sendi menetap"
+    },
+    {
+      "month": 6,
+      "week": 26,
+      "focus": "Uji performa (mg 25), deload & evaluasi akhir (mg 26)",
+      "indicator": "Bandingkan foto/ukuran bulan 0 vs 6; putuskan lanjut lean bulk atau maintenance"
+    }
+  ],
+  "schedule": {
+    "Senin": [
+      {
+        "start": "04:30",
+        "end": "04:40",
+        "activity": "Bangun, minum air 300–500 ml",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "04:40",
+        "end": "04:50",
+        "activity": "Pra-gym: pisang (+kopi hitam opsional)",
+        "category": "Makan",
+        "note": "Kafein opsional; jangan setelah 14:00"
+      },
+      {
+        "start": "04:50",
+        "end": "05:00",
+        "activity": "Ganti pakaian, cek tas & botol minum",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "05:00",
+        "end": "05:20",
+        "activity": "Bersepeda ke gym (santai = pemanasan umum)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "05:20",
+        "end": "06:15",
+        "activity": "Gym — Lower A",
+        "category": "Gym",
+        "note": "Pemanasan 8 mnt + sesi; lihat Workout Plan"
+      },
+      {
+        "start": "06:15",
+        "end": "06:35",
+        "activity": "Bersepeda pulang (pendinginan)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "06:35",
+        "end": "07:00",
+        "activity": "Mandi & bersiap kerja",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1 (pasca-gym)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:20",
+        "end": "08:30",
+        "activity": "Ambil bekal (sudah dimasak) & perjalanan ke kantor",
+        "category": "Transisi",
+        "note": "⚠ PERLU KONFIRMASI durasi perjalanan"
+      },
+      {
+        "start": "08:30",
+        "end": "12:00",
+        "activity": "Kerja",
+        "category": "Kerja",
+        "note": "Isi ulang botol minum 2×"
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2 (bekal)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "17:00",
+        "activity": "Kerja (15:00 camilan)",
+        "category": "Kerja",
+        "note": "Berdiri/jalan 2–3 mnt tiap 60 mnt"
+      },
+      {
+        "start": "17:00",
+        "end": "17:30",
+        "activity": "Perjalanan pulang / transisi",
+        "category": "Transisi",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "17:50",
+        "end": "20:50",
+        "activity": "Tesis (3 × 50 mnt fokus + jeda 10 mnt)",
+        "category": "Tesis",
+        "note": "Dipotong 50 mnt dari jadwal awal → dipindah ke Rabu pagi & akhir pekan"
+      },
+      {
+        "start": "20:50",
+        "end": "21:15",
+        "activity": "Wind-down: siapkan baju gym & bekal, redupkan layar",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:15",
+        "end": "21:30",
+        "activity": "Bersiap tidur",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Selasa": [
+      {
+        "start": "04:30",
+        "end": "04:40",
+        "activity": "Bangun, minum air 300–500 ml",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "04:40",
+        "end": "04:50",
+        "activity": "Pra-gym: pisang (+kopi hitam opsional)",
+        "category": "Makan",
+        "note": "Kafein opsional; jangan setelah 14:00"
+      },
+      {
+        "start": "04:50",
+        "end": "05:00",
+        "activity": "Ganti pakaian, cek tas & botol minum",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "05:00",
+        "end": "05:20",
+        "activity": "Bersepeda ke gym (santai = pemanasan umum)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "05:20",
+        "end": "06:15",
+        "activity": "Gym — Upper A",
+        "category": "Gym",
+        "note": "Pemanasan 8 mnt + sesi; lihat Workout Plan"
+      },
+      {
+        "start": "06:15",
+        "end": "06:35",
+        "activity": "Bersepeda pulang (pendinginan)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "06:35",
+        "end": "07:00",
+        "activity": "Mandi & bersiap kerja",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1 (pasca-gym)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:20",
+        "end": "08:30",
+        "activity": "Ambil bekal (sudah dimasak) & perjalanan ke kantor",
+        "category": "Transisi",
+        "note": "⚠ PERLU KONFIRMASI durasi perjalanan"
+      },
+      {
+        "start": "08:30",
+        "end": "12:00",
+        "activity": "Kerja",
+        "category": "Kerja",
+        "note": "Isi ulang botol minum 2×"
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2 (bekal)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "17:00",
+        "activity": "Kerja (15:00 camilan)",
+        "category": "Kerja",
+        "note": "Berdiri/jalan 2–3 mnt tiap 60 mnt"
+      },
+      {
+        "start": "17:00",
+        "end": "17:30",
+        "activity": "Perjalanan pulang / transisi",
+        "category": "Transisi",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "17:50",
+        "end": "20:50",
+        "activity": "Tesis (3 × 50 mnt fokus + jeda 10 mnt)",
+        "category": "Tesis",
+        "note": "Dipotong 50 mnt dari jadwal awal → dipindah ke Rabu pagi & akhir pekan"
+      },
+      {
+        "start": "20:50",
+        "end": "21:15",
+        "activity": "Wind-down: siapkan baju gym & bekal, redupkan layar",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:15",
+        "end": "21:30",
+        "activity": "Bersiap tidur",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Rabu": [
+      {
+        "start": "04:30",
+        "end": "04:45",
+        "activity": "Bangun, minum air, kopi opsional",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "04:45",
+        "end": "06:45",
+        "activity": "Tesis blok pagi (2 jam, energi kognitif tertinggi)",
+        "category": "Tesis",
+        "note": "Kompensasi jam tesis malam"
+      },
+      {
+        "start": "06:45",
+        "end": "07:00",
+        "activity": "Mandi & bersiap",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:20",
+        "end": "08:30",
+        "activity": "Ambil bekal & perjalanan ke kantor",
+        "category": "Transisi",
+        "note": "⚠ PERLU KONFIRMASI durasi perjalanan"
+      },
+      {
+        "start": "08:30",
+        "end": "12:00",
+        "activity": "Kerja",
+        "category": "Kerja",
+        "note": ""
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2 (bekal)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "17:00",
+        "activity": "Kerja (15:00 camilan)",
+        "category": "Kerja",
+        "note": ""
+      },
+      {
+        "start": "17:00",
+        "end": "17:30",
+        "activity": "Perjalanan pulang",
+        "category": "Transisi",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "17:50",
+        "end": "18:30",
+        "activity": "Meal prep tengah minggu (ayam/ikan, rebus telur, nasi) untuk Kamis–Sabtu",
+        "category": "Meal prep",
+        "note": ""
+      },
+      {
+        "start": "18:30",
+        "end": "20:50",
+        "activity": "Tesis",
+        "category": "Tesis",
+        "note": ""
+      },
+      {
+        "start": "20:50",
+        "end": "21:30",
+        "activity": "Wind-down",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Kamis": [
+      {
+        "start": "04:30",
+        "end": "04:40",
+        "activity": "Bangun, minum air 300–500 ml",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "04:40",
+        "end": "04:50",
+        "activity": "Pra-gym: pisang (+kopi hitam opsional)",
+        "category": "Makan",
+        "note": "Kafein opsional; jangan setelah 14:00"
+      },
+      {
+        "start": "04:50",
+        "end": "05:00",
+        "activity": "Ganti pakaian, cek tas & botol minum",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "05:00",
+        "end": "05:20",
+        "activity": "Bersepeda ke gym (santai = pemanasan umum)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "05:20",
+        "end": "06:15",
+        "activity": "Gym — Lower B",
+        "category": "Gym",
+        "note": "Pemanasan 8 mnt + sesi; lihat Workout Plan"
+      },
+      {
+        "start": "06:15",
+        "end": "06:35",
+        "activity": "Bersepeda pulang (pendinginan)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "06:35",
+        "end": "07:00",
+        "activity": "Mandi & bersiap kerja",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1 (pasca-gym)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:20",
+        "end": "08:30",
+        "activity": "Ambil bekal (sudah dimasak) & perjalanan ke kantor",
+        "category": "Transisi",
+        "note": "⚠ PERLU KONFIRMASI durasi perjalanan"
+      },
+      {
+        "start": "08:30",
+        "end": "12:00",
+        "activity": "Kerja",
+        "category": "Kerja",
+        "note": "Isi ulang botol minum 2×"
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2 (bekal)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "17:00",
+        "activity": "Kerja (15:00 camilan)",
+        "category": "Kerja",
+        "note": "Berdiri/jalan 2–3 mnt tiap 60 mnt"
+      },
+      {
+        "start": "17:00",
+        "end": "17:30",
+        "activity": "Perjalanan pulang / transisi",
+        "category": "Transisi",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "17:50",
+        "end": "20:50",
+        "activity": "Tesis (3 × 50 mnt fokus + jeda 10 mnt)",
+        "category": "Tesis",
+        "note": "Dipotong 50 mnt dari jadwal awal → dipindah ke Rabu pagi & akhir pekan"
+      },
+      {
+        "start": "20:50",
+        "end": "21:15",
+        "activity": "Wind-down: siapkan baju gym & bekal, redupkan layar",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:15",
+        "end": "21:30",
+        "activity": "Bersiap tidur",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Jumat": [
+      {
+        "start": "04:30",
+        "end": "04:40",
+        "activity": "Bangun, minum air 300–500 ml",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "04:40",
+        "end": "04:50",
+        "activity": "Pra-gym: pisang (+kopi hitam opsional)",
+        "category": "Makan",
+        "note": "Kafein opsional; jangan setelah 14:00"
+      },
+      {
+        "start": "04:50",
+        "end": "05:00",
+        "activity": "Ganti pakaian, cek tas & botol minum",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "05:00",
+        "end": "05:20",
+        "activity": "Bersepeda ke gym (santai = pemanasan umum)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "05:20",
+        "end": "06:15",
+        "activity": "Gym — Upper B",
+        "category": "Gym",
+        "note": "Pemanasan 8 mnt + sesi; lihat Workout Plan"
+      },
+      {
+        "start": "06:15",
+        "end": "06:35",
+        "activity": "Bersepeda pulang (pendinginan)",
+        "category": "Bersepeda",
+        "note": ""
+      },
+      {
+        "start": "06:35",
+        "end": "07:00",
+        "activity": "Mandi & bersiap kerja",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1 (pasca-gym)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:20",
+        "end": "08:30",
+        "activity": "Ambil bekal (sudah dimasak) & perjalanan ke kantor",
+        "category": "Transisi",
+        "note": "⚠ PERLU KONFIRMASI durasi perjalanan"
+      },
+      {
+        "start": "08:30",
+        "end": "12:00",
+        "activity": "Kerja",
+        "category": "Kerja",
+        "note": "Isi ulang botol minum 2×"
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2 (bekal)",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "17:00",
+        "activity": "Kerja (15:00 camilan)",
+        "category": "Kerja",
+        "note": "Berdiri/jalan 2–3 mnt tiap 60 mnt"
+      },
+      {
+        "start": "17:00",
+        "end": "17:30",
+        "activity": "Perjalanan pulang / transisi",
+        "category": "Transisi",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "17:50",
+        "end": "20:50",
+        "activity": "Tesis (3 × 50 mnt fokus + jeda 10 mnt)",
+        "category": "Tesis",
+        "note": "Dipotong 50 mnt dari jadwal awal → dipindah ke Rabu pagi & akhir pekan"
+      },
+      {
+        "start": "20:50",
+        "end": "21:15",
+        "activity": "Wind-down: siapkan baju gym & bekal, redupkan layar",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:15",
+        "end": "21:30",
+        "activity": "Bersiap tidur",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Sabtu": [
+      {
+        "start": "05:30",
+        "end": "06:00",
+        "activity": "Bangun (+1 jam tidur), minum air",
+        "category": "Persiapan",
+        "note": "Tidur 21:30–05:30 = 8 jam"
+      },
+      {
+        "start": "06:00",
+        "end": "06:30",
+        "activity": "Mobilitas/peregangan ringan (opsional)",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:30",
+        "end": "10:30",
+        "activity": "Tesis (3 jam)",
+        "category": "Tesis",
+        "note": ""
+      },
+      {
+        "start": "10:30",
+        "end": "12:00",
+        "activity": "Belanja mingguan + istirahat",
+        "category": "Meal prep",
+        "note": "Lihat Shopping List"
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "12:30",
+        "end": "14:30",
+        "activity": "Tesis ringan / tidur siang ≤20 mnt",
+        "category": "Tesis",
+        "note": "Opsional — hitung jika dikerjakan"
+      },
+      {
+        "start": "15:00",
+        "end": "15:15",
+        "activity": "Camilan sebelum sepak bola",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "15:30",
+        "end": "17:30",
+        "activity": "Sepak bola (opsional)",
+        "category": "Aktivitas tambahan",
+        "note": "Minum 500–750 ml selama/sesudah"
+      },
+      {
+        "start": "18:30",
+        "end": "19:00",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "19:00",
+        "end": "21:00",
+        "activity": "Biliar / waktu bebas (opsional)",
+        "category": "Aktivitas tambahan",
+        "note": "Pulang tepat waktu agar tidur 21:30"
+      },
+      {
+        "start": "21:30",
+        "end": "05:30",
+        "activity": "Tidur (8 jam)",
+        "category": "Tidur",
+        "note": ""
+      }
+    ],
+    "Minggu": [
+      {
+        "start": "05:30",
+        "end": "06:00",
+        "activity": "Bangun, minum air",
+        "category": "Persiapan",
+        "note": ""
+      },
+      {
+        "start": "06:00",
+        "end": "06:30",
+        "activity": "Jogging santai 20–30 mnt (opsional)",
+        "category": "Aktivitas tambahan",
+        "note": "Intensitas bisa ngobrol"
+      },
+      {
+        "start": "07:00",
+        "end": "07:20",
+        "activity": "Makan 1",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "07:30",
+        "end": "09:30",
+        "activity": "Meal prep besar: nasi, ayam, tempe bacem, rebus telur, potong sayur (Sen–Rab)",
+        "category": "Meal prep",
+        "note": ""
+      },
+      {
+        "start": "09:30",
+        "end": "12:00",
+        "activity": "Tesis",
+        "category": "Tesis",
+        "note": ""
+      },
+      {
+        "start": "12:00",
+        "end": "12:30",
+        "activity": "Makan 2",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "13:00",
+        "end": "15:00",
+        "activity": "Istirahat / keluarga / biliar (opsional)",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "15:00",
+        "end": "15:15",
+        "activity": "Camilan",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "15:30",
+        "end": "17:00",
+        "activity": "Tesis",
+        "category": "Tesis",
+        "note": ""
+      },
+      {
+        "start": "17:30",
+        "end": "17:50",
+        "activity": "Makan 3",
+        "category": "Makan",
+        "note": ""
+      },
+      {
+        "start": "18:00",
+        "end": "18:30",
+        "activity": "Weekly Review (isi sheet) + rencanakan minggu depan",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "18:30",
+        "end": "20:50",
+        "activity": "Waktu bebas",
+        "category": "Pemulihan",
+        "note": ""
+      },
+      {
+        "start": "21:30",
+        "end": "04:30",
+        "activity": "Tidur (7 jam) — kembali ke jadwal Senin",
+        "category": "Tidur",
+        "note": ""
+      }
+    ]
+  },
+  "conflicts": [
+    {
+      "status": "⚠ KONFLIK",
+      "issue": "Tesis berakhir 21:40, bangun 04:30",
+      "impact": "Tidur maks. ±6,5 jam → pemulihan otot, fokus kerja & tesis turun",
+      "solution": "Tesis malam 17:50–20:50, lampu mati 21:30 (7 jam). 40 menit/hari dipindah ke blok pagi Rabu (2 jam) dan blok Sabtu/Minggu → total jam tesis/minggu justru naik (lihat B10)."
+    },
+    {
+      "status": "⚠ KONFLIK",
+      "issue": "Makan malam vs mulai tesis 17:30",
+      "impact": "Tesis tertunda atau makan terlewat",
+      "solution": "Makan 3 pukul 17:30–17:50 (bekal sudah siap), tesis mulai 17:50."
+    },
+    {
+      "status": "⚠ PERLU KONFIRMASI",
+      "issue": "Durasi perjalanan rumah → kantor belum diketahui",
+      "impact": "Blok 07:20–08:30 bisa kurang/lebih",
+      "solution": "Isi durasi sebenarnya; jika >45 mnt, siapkan Makan 1 portable (overnight oats/roti telur)."
+    },
+    {
+      "status": "OK",
+      "issue": "Sepak bola Sabtu sore vs Lower A Senin",
+      "impact": "Jarak ±62 jam",
+      "solution": "Aman. Hindari sepak bola Minggu; jika terpaksa, lihat aturan di Workout Plan."
+    },
+    {
+      "status": "OK",
+      "issue": "Bangun 04:30 setiap hari",
+      "impact": "Ritme sirkadian stabil",
+      "solution": "Sabtu boleh bangun 05:30 (tidur 8 jam); Minggu malam kembali tidur 21:30."
+    }
+  ],
+  "foodGuide": [
+    {
+      "group": "Prioritas utama",
+      "food": "Telur ayam ras",
+      "reason": "Protein lengkap & murah (±Rp1.900/butir), mudah dimasak",
+      "portion": "2–3 butir/makan",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Prioritas utama",
+      "food": "Dada/paha ayam fillet",
+      "reason": "Protein tinggi per rupiah, fleksibel bumbu",
+      "portion": "120–150 g mentah",
+      "frequency": "1–2×/hari"
+    },
+    {
+      "group": "Prioritas utama",
+      "food": "Tempe",
+      "reason": "Protein nabati + serat, sangat murah",
+      "portion": "80–100 g",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Prioritas utama",
+      "food": "Nasi",
+      "reason": "Karbo utama untuk energi latihan & tesis",
+      "portion": "200–270 g matang",
+      "frequency": "2–3×/hari"
+    },
+    {
+      "group": "Prioritas utama",
+      "food": "Oat",
+      "reason": "Karbo + serat, sarapan cepat ±5 menit",
+      "portion": "60–80 g kering",
+      "frequency": "3–4×/minggu"
+    },
+    {
+      "group": "Alternatif protein",
+      "food": "Ikan tongkol/kembung/bandeng/lele",
+      "reason": "Protein + lemak omega-3 (ikan berlemak)",
+      "portion": "120–150 g daging",
+      "frequency": "2–3×/minggu"
+    },
+    {
+      "group": "Alternatif protein",
+      "food": "Tahu",
+      "reason": "Protein nabati murah, rendah kalori",
+      "portion": "100–150 g",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Alternatif protein",
+      "food": "Susu UHT / yoghurt",
+      "reason": "Protein + kalsium, mudah diminum",
+      "portion": "250 ml / 150 g",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Alternatif protein",
+      "food": "Daging sapi lean",
+      "reason": "Protein + zat besi & B12; lebih mahal",
+      "portion": "70–100 g",
+      "frequency": "1×/minggu"
+    },
+    {
+      "group": "Alternatif protein",
+      "food": "Kacang hijau / kacang merah",
+      "reason": "Protein + serat, cocok bubur/sayur",
+      "portion": "50 g kering",
+      "frequency": "Opsional"
+    },
+    {
+      "group": "Sumber karbohidrat",
+      "food": "Ubi jalar, kentang",
+      "reason": "Variasi karbo, serat & kalium",
+      "portion": "150–250 g",
+      "frequency": "2–3×/minggu"
+    },
+    {
+      "group": "Sumber karbohidrat",
+      "food": "Roti tawar",
+      "reason": "Praktis pra-gym/kantor",
+      "portion": "2–4 lembar",
+      "frequency": "Bila perlu"
+    },
+    {
+      "group": "Sumber karbohidrat",
+      "food": "Nasi merah",
+      "reason": "Serat lebih tinggi; boleh campur 50:50",
+      "portion": "200–250 g matang",
+      "frequency": "Opsional"
+    },
+    {
+      "group": "Sumber lemak sehat",
+      "food": "Kacang tanah sangrai",
+      "reason": "Padat kalori → bantu capai surplus",
+      "portion": "30 g (1 genggam)",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Sumber lemak sehat",
+      "food": "Kuning telur, ikan berlemak",
+      "reason": "Lemak esensial, vitamin larut lemak",
+      "portion": "Sudah ada di menu",
+      "frequency": "—"
+    },
+    {
+      "group": "Sumber lemak sehat",
+      "food": "Minyak untuk menumis",
+      "reason": "Perlu, tapi takar",
+      "portion": "1–2 sdt per masakan",
+      "frequency": "Setiap masak"
+    },
+    {
+      "group": "Sayur & buah",
+      "food": "Bayam, kangkung, wortel, kol, buncis",
+      "reason": "Serat, mikronutrien; bantu pencernaan",
+      "portion": "≥300 g/hari",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Sayur & buah",
+      "food": "Pisang, pepaya, jeruk, semangka",
+      "reason": "Karbo cepat pra-gym, vitamin, murah",
+      "portion": "2–3 buah/hari",
+      "frequency": "Setiap hari"
+    },
+    {
+      "group": "Perlu dibatasi (porsi)",
+      "food": "Gorengan, fast food, mi instan",
+      "reason": "Padat kalori tapi rendah protein & mikronutrien; lemak sulit diukur",
+      "portion": "≤2–3 porsi/minggu",
+      "frequency": "Tidak dilarang"
+    },
+    {
+      "group": "Perlu dibatasi (porsi)",
+      "food": "Minuman manis (teh manis, boba, soda)",
+      "reason": "Kalori cair tanpa rasa kenyang; ganggu kualitas diet",
+      "portion": "≤1/hari",
+      "frequency": "Ganti air/teh tawar"
+    },
+    {
+      "group": "Perlu dibatasi (porsi)",
+      "food": "Daging olahan (sosis, nugget)",
+      "reason": "Natrium tinggi, protein lebih rendah; dikaitkan risiko kesehatan bila sering",
+      "portion": "Sesekali",
+      "frequency": "≤2×/minggu"
+    },
+    {
+      "group": "Waspadai (tidur/hidrasi/pemulihan)",
+      "food": "Kopi, teh pekat, minuman energi setelah 14:00",
+      "reason": "Waktu paruh kafein ±5 jam → mengganggu tidur 21:30",
+      "portion": "Kopi hanya pagi",
+      "frequency": "—"
+    },
+    {
+      "group": "Waspadai (tidur/hidrasi/pemulihan)",
+      "food": "Alkohol",
+      "reason": "Mengganggu kualitas tidur & sintesis protein otot",
+      "portion": "Sebaiknya hindari",
+      "frequency": "—"
+    },
+    {
+      "group": "Waspadai (tidur/hidrasi/pemulihan)",
+      "food": "Makan besar/pedas tepat sebelum tidur",
+      "reason": "Refluks & tidur terganggu; makan 3 sudah 17:30",
+      "portion": "Camilan ringan bila lapar",
+      "frequency": "—"
+    },
+    {
+      "group": "Praktis di kantor/luar",
+      "food": "Warteg / warung nasi",
+      "reason": "Nasi + ayam/ikan/telur + tempe/tahu + sayur ≈ 1 Makan 2",
+      "portion": "Minta lauk ganda protein",
+      "frequency": "Kapan saja"
+    },
+    {
+      "group": "Praktis di kantor/luar",
+      "food": "Minimarket",
+      "reason": "Susu UHT, telur rebus, roti, pisang, yoghurt, kacang",
+      "portion": "Susu 250 ml + 2 telur ≈ 20 g protein",
+      "frequency": "Darurat"
+    },
+    {
+      "group": "Praktis di kantor/luar",
+      "food": "Nasi padang",
+      "reason": "Pilih ayam bakar/rendang + sayur; kuah sedikit",
+      "portion": "1 porsi",
+      "frequency": "Sesekali"
+    }
+  ],
+  "supplements": [
+    {
+      "name": "Creatine monohydrate",
+      "evidence": "Paling kuat: menambah kekuatan & massa bebas lemak bila dikombinasi latihan beban (ISSN 2017)",
+      "who": "Siapa saja yang latihan beban rutin",
+      "dose": "3–5 g/hari, kapan saja, tanpa loading",
+      "limits": "BB bisa naik 0,5–1 kg (air intrasel). Aman pada orang sehat; konsultasi dokter bila ada penyakit ginjal",
+      "cost": "±Rp150–300 rb per 300 g (±2–3 bulan) ≈ Rp2–4 rb/hari"
+    },
+    {
+      "name": "Whey protein",
+      "evidence": "Setara protein makanan; manfaatnya hanya membantu capai target protein",
+      "who": "Bila protein harian sering <90% target",
+      "dose": "20–30 g bila perlu",
+      "limits": "Tidak lebih unggul dari telur/ayam; harga per gram protein lebih mahal dari telur/tempe",
+      "cost": "±Rp350–450 rb/kg ≈ Rp10–14 rb/sajian"
+    },
+    {
+      "name": "Kafein",
+      "evidence": "Meningkatkan performa & fokus (ISSN 2021: 3–6 mg/kg)",
+      "who": "Pra-gym pagi bila mengantuk",
+      "dose": "Mulai 1–2 mg/kg (≈70–140 mg = 1 gelas kopi)",
+      "limits": "Jangan setelah 14:00; dosis tinggi → gelisah, ganggu tidur",
+      "cost": "Kopi tubruk ±Rp1–3 rb"
+    },
+    {
+      "name": "Vitamin D / zat besi / lainnya",
+      "evidence": "Bermanfaat hanya jika memang kurang",
+      "who": "Hanya setelah cek darah & saran dokter",
+      "dose": "Sesuai resep",
+      "limits": "Tidak dianjurkan tanpa data; jangan diagnosis sendiri",
+      "cost": "—"
+    },
+    {
+      "name": "Mass gainer, BCAA, 'fat burner'",
+      "evidence": "Tidak diperlukan bila protein & kalori dari makanan cukup",
+      "who": "—",
+      "dose": "—",
+      "limits": "Mahal; BCAA tak bermanfaat bila protein cukup",
+      "cost": "—"
+    }
+  ],
+  "sources": [
+    "Mifflin MD et al. (1990). A new predictive equation for resting energy expenditure. Am J Clin Nutr 51:241–247.",
+    "Jäger R et al. (2017). ISSN Position Stand: Protein and exercise. J Int Soc Sports Nutr 14:20.",
+    "Morton RW et al. (2018). Protein supplementation & resistance training-induced gains: meta-analysis. Br J Sports Med 52:376–384.",
+    "Schoenfeld BJ & Aragon AA (2018). How much protein can the body use in a single meal? J Int Soc Sports Nutr 15:10.",
+    "Iraki J et al. (2019). Nutrition recommendations for bodybuilders in the off-season. Sports 7(7):154.",
+    "Slater GJ et al. (2019). Is an energy surplus required to maximize muscle hypertrophy? Front Nutr 6:131.",
+    "Schoenfeld BJ, Ogborn D, Krieger JW (2017). Dose-response of weekly resistance training volume & muscle mass. J Sports Sci 35:1073–1082.",
+    "Schoenfeld BJ, Ogborn D, Krieger JW (2016). Effects of resistance training frequency on hypertrophy. Sports Med 46:1689–1697.",
+    "Helms ER et al. (2016). Application of the RIR-based RPE scale for resistance training. Strength Cond J 38(4):42–49.",
+    "Kreider RB et al. (2017). ISSN Position Stand: Creatine supplementation. J Int Soc Sports Nutr 14:18.",
+    "Guest NS et al. (2021). ISSN Position Stand: Caffeine and exercise performance. J Int Soc Sports Nutr 18:1.",
+    "Ainsworth BE et al. (2011) & Herrmann SD et al. (2024). Compendium of Physical Activities (nilai MET).",
+    "Hirshkowitz M et al. (2015). National Sleep Foundation sleep duration recommendations. Sleep Health 1:40–43.",
+    "WHO Expert Consultation (2004). Appropriate BMI for Asian populations. Lancet 363:157–163.",
+    "Permenkes RI No. 28/2019 tentang Angka Kecukupan Gizi (serat & air); Kemenkes RI (2017) Tabel Komposisi Pangan Indonesia; USDA FoodData Central.",
+    "Harga pangan: Panel Harga Bapanas, PIHPS (BI), dan rilis BPS 2025–2026 via pemberitaan; diperlakukan sebagai estimasi."
+  ]
+}
